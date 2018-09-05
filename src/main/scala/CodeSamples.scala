@@ -190,7 +190,7 @@ object CodeSamples {
 
     //P26 (**) Generate the combinations of K distinct objects chosen from the N elements of a list.
 
-    def combinationsBuiltin(i: Int, symbols: List[Symbol]): List[List[Symbol]] = symbols.combinations(i).toList
+    def combinationsBuiltin[A](i: Int, symbols: List[A]): List[List[A]] = symbols.combinations(i).toList
 
     def combinationsRecursive(i: Int, symbols: List[Symbol]): List[List[Symbol]] = symbols match {
       case ls if i > ls.length => Nil
@@ -208,12 +208,10 @@ object CodeSamples {
        } yield List(comb2,comb3,comb4)
     }.toList
 
-    def group(groups: List[Int], people: List[String]): List[List[List[String]]]  = {
-      // --- TBD ---
-      List()
+    def group(groups: List[Int], people: List[String]): List[List[List[String]]]  = groups match {
+      case h :: Nil => List(people.combinations(h).toList)
+      case h :: tail => people.combinations(h).flatMap(k => group(tail,people diff k).map(k :: _)).toList
     }
-
-    //println(group3(List("Aldo", "Beat", "Carla", "David", "Evi", "Flip", "Gary", "Hugo", "Ida")))
 
     //P28 (**) Sorting a list of lists according to length of sublists.
 
