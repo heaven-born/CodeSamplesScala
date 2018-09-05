@@ -201,8 +201,19 @@ object CodeSamples {
 
     //P27 (**) Group the elements of a set into disjoint subsets.
 
-    // --- TBD ---
+    def group3(lst: List[String]): List[List[List[String]]]  = {
+       for { comb2 <- lst.combinations(2)
+             comb3 <- (lst diff comb2).combinations(3)
+             comb4 <- (lst diff comb3 diff comb2).combinations(4)
+       } yield List(comb2,comb3,comb4)
+    }.toList
 
+    def group(groups: List[Int], people: List[String]): List[List[List[String]]]  = {
+      // --- TBD ---
+      List()
+    }
+
+    //println(group3(List("Aldo", "Beat", "Carla", "David", "Evi", "Flip", "Gary", "Hugo", "Ida")))
 
     //P28 (**) Sorting a list of lists according to length of sublists.
 
