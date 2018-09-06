@@ -25,6 +25,13 @@ object CodeSamplesArithmetic {
     }
 
 
+    //P34 (**) Calculate Euler's totient function phi(m).
+
+    implicit class Totient(a:Int) {
+      def totient: Int = (1 until a).count(_.isCoprimeTo(a))
+    }
+
+
   }
 
 }
