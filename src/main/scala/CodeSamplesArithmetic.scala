@@ -18,6 +18,13 @@ object CodeSamplesArithmetic {
     }
 
 
+    //P33 (*) Determine whether two positive integer numbers are coprime.
+
+    implicit class CoPrime(a: Int) {
+      def isCoprimeTo(b: Int): Boolean = gcd(a,b)==1
+    }
+
+
   }
 
 }
