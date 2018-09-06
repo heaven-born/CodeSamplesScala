@@ -6,17 +6,19 @@ object CodeSamplesArithmetic {
     //P31 (**) Determine whether a given integer number is prime.
 
     implicit class Prime(n:Int) {
-      def isPrime: Boolean = if (n<=1) false else !(2 until n - 1).toStream.exists(n % _ == 0)
+      def isPrime: Boolean =
+        if (n <= 1)
+          false
+        else
+          !(2 until n - 1).exists(n % _ == 0)
     }
-
 
     //P32 (**) Determine the greatest common divisor of two positive integer numbers.
 
-    def gcd(a: Int, b: Int) = {
-      lazy val stream : Stream[(Int,Int)] =  (a,b) #:: stream.map{case (i,k)=>(k, i % k)}
-      stream.dropWhile(_._2!=0).head._1
-    }
-
+    def gcd(a: Int, b: Int) = Stream
+        .iterate((a,b)) {case (i,k)=>(k, i % k)}
+        .dropWhile(_._2!=0)
+        .head._1
 
     //P33 (*) Determine whether two positive integer numbers are coprime.
 
@@ -31,6 +33,9 @@ object CodeSamplesArithmetic {
       def totient: Int = (1 until a).count(_.isCoprimeTo(a))
     }
 
+    //P35 (**) Determine the prime factors of a given positive integer.
+
+    //TBD
 
   }
 
