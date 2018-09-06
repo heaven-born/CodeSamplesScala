@@ -1,5 +1,5 @@
 
-object CodeSamples {
+object CodeSamplesWorkingWithLists {
 
   def main(args: Array[String]): Unit = {
 
