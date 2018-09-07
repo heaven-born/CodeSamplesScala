@@ -34,8 +34,32 @@ object CodeSamplesArithmetic {
     }
 
     //P35 (**) Determine the prime factors of a given positive integer.
+      //??? probably regular recursive solutions it more readable
 
-    //TBD
+    implicit class PrimeFactors(n:Int) {
+
+      def primeFactors:List[Int] = Stream
+        .iterate(f(n,primeNumbers))(z=>f(z._1, z._3))
+        .takeWhile(k=> !(k._1==1 && k._2.isEmpty) )
+        .toList
+        .flatMap(_._2)
+
+      private val primeNumbers = Stream.from(1).filter(_.isPrime)
+
+      private def f(number: Int, pNumbs: Seq[Int]) = {
+        val steps = legalDivSteps(number, pNumbs.head)
+        (steps.last.toInt, Seq.tabulate(steps.size - 1)(_=>pNumbs.head), pNumbs.tail)
+      }
+
+      private def legalDivSteps(number: Int, pn: Int) = Stream
+        .iterate(number.toFloat)(_ / pn)
+        .takeWhile(_.isValidInt)
+
+    }
+    //println(315.primeFactors)
+
+
+
 
   }
 
