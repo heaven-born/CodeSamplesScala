@@ -69,6 +69,18 @@ object CodeSamplesArithmetic {
 
      }
 
+    //P37 (**) Calculate Euler's totient function phi(m) (improved).
+
+    import Math._
+
+    implicit class TotientImporved(a:Int) {
+      def totientImproved: Int = a
+        .primeFactorMultiplicity
+        .foldLeft(1){ (acc,elem) =>
+          acc * (elem._1 -1)*pow(elem._1,elem._2-1).toInt
+        }
+    }
+
 
   }
 
