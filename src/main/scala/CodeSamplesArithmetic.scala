@@ -77,7 +77,7 @@ object CodeSamplesArithmetic {
       def totientImproved: Int = a
         .primeFactorMultiplicity
         .foldLeft(1){ (acc,elem) =>
-          acc * (elem._1 -1)*pow(elem._1,elem._2-1).toInt
+          acc * (elem._1 -1) * pow(elem._1, elem._2-1).toInt
         }
     }
 
