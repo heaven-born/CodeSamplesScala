@@ -81,6 +81,19 @@ object CodeSamplesArithmetic {
         }
     }
 
+    //P38 (*) Compare the two methods of calculating Euler's totient function.
+
+    //uncomment to compare
+    //time(println("Original totient: " + 10090.totient))
+    //time(println("Improved totient: " + 10090.totientImproved))
+
+    def time[R](block: => R): R = {
+      val t0 = System.nanoTime()
+      val result = block    // call-by-name
+      val t1 = System.nanoTime()
+      println("Elapsed time: " + (t1 - t0) + "ns")
+      result
+    }
 
   }
 
