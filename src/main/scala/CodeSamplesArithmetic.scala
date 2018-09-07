@@ -95,6 +95,11 @@ object CodeSamplesArithmetic {
       result
     }
 
+    //P39 (*) A list of prime numbers.
+
+    def listPrimesinRange(inclusive: Range.Inclusive) =  inclusive.filter(_.isPrime)
+
+
   }
 
 }

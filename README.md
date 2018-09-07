@@ -1,3 +1,3 @@
 # CodeSamplesScala
 
-My implementation of 1-38 tasks from http://aperiodic.net/phil/scala/s-99/
+My implementation of 1-39 tasks from http://aperiodic.net/phil/scala/s-99/
