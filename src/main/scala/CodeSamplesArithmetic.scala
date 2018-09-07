@@ -34,7 +34,7 @@ object CodeSamplesArithmetic {
     }
 
     //P35 (**) Determine the prime factors of a given positive integer.
-      //??? probably regular recursive solutions it more readable
+      //??? probably regular recursive solutions is more readable
 
     implicit class PrimeFactors(n:Int) {
 
