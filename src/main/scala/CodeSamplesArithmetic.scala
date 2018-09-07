@@ -66,7 +66,6 @@ object CodeSamplesArithmetic {
       def primeFactorMultiplicity: List[(Int,Int)] = pfInfo
         .filter(_._2.nonEmpty)
         .map(k=>(k._2.head,k._2.size))
-
      }
 
     //P37 (**) Calculate Euler's totient function phi(m) (improved).
