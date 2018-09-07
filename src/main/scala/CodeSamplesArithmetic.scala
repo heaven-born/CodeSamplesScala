@@ -38,11 +38,13 @@ object CodeSamplesArithmetic {
 
     implicit class PrimeFactors(n:Int) {
 
-      def primeFactors:List[Int] = Stream
+      def primeFactors:List[Int] = pfInfo
+        .flatMap(_._2)
+
+      protected def pfInfo = Stream
         .iterate(f(n,primeNumbers))(z=>f(z._1, z._3))
         .takeWhile(k=> !(k._1==1 && k._2.isEmpty) )
         .toList
-        .flatMap(_._2)
 
       private val primeNumbers = Stream.from(1).filter(_.isPrime)
 
@@ -56,9 +58,16 @@ object CodeSamplesArithmetic {
         .takeWhile(_.isValidInt)
 
     }
-    //println(315.primeFactors)
 
+    //P36 (**) Determine the prime factors of a given positive integer (2).
 
+     implicit class PrimeFactors2 (n: Int) extends PrimeFactors(n)  {
+
+      def primeFactorMultiplicity: List[(Int,Int)] = pfInfo
+        .filter(_._2.nonEmpty)
+        .map(k=>(k._2.head,k._2.size))
+
+     }
 
 
   }
