@@ -98,6 +98,16 @@ object CodeSamplesArithmetic {
 
     def listPrimesinRange(inclusive: Range.Inclusive) =  inclusive.filter(_.isPrime)
 
+    //P40 (**) Goldbach's conjecture.
+
+    implicit class Goldbach(a:Int) {
+      private def primeNums(from: Int, to: Int) = (from to to).toStream.filter(_.isPrime)
+      def goldbach: (Int,Int) = primeNums(3,a)
+        .flatMap(k => primeNums(k,a-k).map(t => (k+t,(k,t))))
+        .filter(v => v._1==a).head._2
+    }
+
+
 
   }
 
