@@ -5,6 +5,20 @@ import java.time.{Instant, ZoneId}
 
 import scala.io.Source
 
+/**
+  * Problem: Time Series Merge
+  *
+  * Time series are stored in files with the following format:
+  *
+  * ● files are multiline plain text files in ASCII encoding
+  * ● each line contains exactly one record
+  * ● each record contains date and integer value; records are encoded like so: YYYY-MM- DD:X
+  * ● dates within single file are non-duplicate and sorted in ascending order ● files can be bigger than RAM available on target host
+  *
+  * Script merges arbitrary number of files, up to 100, into one file. Result file follows same format
+  * conventions as described above. Records with same date value is merged into one by summing up X values.
+  */
+
 class FileMerger {
 
   private val DATE_FORMAT = "yyyy-MM-dd"
