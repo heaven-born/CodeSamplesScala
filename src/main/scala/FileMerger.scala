@@ -57,14 +57,14 @@ class FileMerger {
     }.takeWhile(_.nonEmpty).map(_.head.head)
 
 
-    def span(s: Stream[Row]):Unit =   {
+    def mergeAndWrite(s: Stream[Row]):Unit =   {
       val (l,r) = s.span(_.date == s.head.date)
       val res = l.reduce((a,b)=>Row(a.date, a.value+b.value))
       outFile.println(formatter.format(res.date)+ s":${res.value}")
-      if (r.nonEmpty) span(r)
+      if (r.nonEmpty) mergeAndWrite(r)
     }
 
-    span(streamWithAllRowsSorted)
+    mergeAndWrite(streamWithAllRowsSorted)
 
     //close sources
     files.foreach(_.close())
