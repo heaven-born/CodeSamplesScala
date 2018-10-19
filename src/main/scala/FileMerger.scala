@@ -13,7 +13,8 @@ import scala.io.Source
   * ● files are multiline plain text files in ASCII encoding
   * ● each line contains exactly one record
   * ● each record contains date and integer value; records are encoded like so: YYYY-MM- DD:X
-  * ● dates within single file are non-duplicate and sorted in ascending order ● files can be bigger than RAM available on target host
+  * ● dates within single file are non-duplicate and sorted in ascending order
+  * ● files can be bigger than RAM available on target host
   *
   * Script merges arbitrary number of files, up to 100, into one file. Result file follows same format
   * conventions as described above. Records with same date value is merged into one by summing up X values.
