@@ -35,7 +35,7 @@ class FileMerger {
     val outFile = new PrintWriter(new File(outputFile))
 
     //NOTE: it is supposed that each file is valid and contains at least one line
-    val filesWithFirstRow = files
+    val fileStreamsSorted = files
       .map(_.getLines()
             .map(_.split(":"))
             .map(k=>Row(k(0).toInstant,k(1).toInt)))
@@ -51,7 +51,7 @@ class FileMerger {
       }
     }
 
-    val streamWithAllRowsSorted = Stream.iterate(filesWithFirstRow){
+    val streamWithAllRowsSorted = Stream.iterate(fileStreamsSorted){
       case (_ #:: Stream.Empty) :: tail =>  moveFirstElem(tail)
       case (_ #:: rest) :: tail => moveFirstElem(rest :: tail)
     }.takeWhile(_.nonEmpty).map(_.head.head)
