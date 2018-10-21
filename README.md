@@ -1,7 +1,7 @@
 # CodeSamplesScala
 
 
-CodeSamplesWorkingWithLists -  my implementation of 3-28 tasks from http://aperiodic.net/phil/scala/s-99/
+CodeSamplesWorkingWithLists -  my implementation of 1-28 tasks from http://aperiodic.net/phil/scala/s-99/
 
 CodeSamplesArithmetic - my implementation of 31-40 tasks from http://aperiodic.net/phil/scala/s-99/
 
