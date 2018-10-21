@@ -60,7 +60,7 @@ class FileMerger {
 
     def mergeAndWrite(s: Stream[Row]):Unit =   {
       val (l,r) = s.span(_.date == s.head.date)
-      val res = l.reduce((a,b)=>Row(a.date, a.value+b.value))
+      val res = l.reduce((a,b) => Row(a.date, a.value+b.value))
       outFile.println(formatter.format(res.date)+ s":${res.value}")
       if (r.nonEmpty) mergeAndWrite(r)
     }
