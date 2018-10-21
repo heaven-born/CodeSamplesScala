@@ -1,7 +1,25 @@
 
 object CodeSamplesWorkingWithLists {
 
+
   def main(args: Array[String]): Unit = {
+
+    // P1 Find the last element of a list.
+
+    def last(ints: List[Int]): Int = ints match {
+      case Nil => throw new IllegalArgumentException("Can't find last element on empty list")
+      case x :: Nil => x
+      case  _ :: tail => last(tail)
+    }
+
+    //P02 (*) Find the last but one element of a list.
+
+    def penultimate(ints: List[Int]): Int = ints match {
+      case Nil => throw new IllegalArgumentException("Can't find last but one element on empty list")
+      case _ ::  Nil => throw new IllegalArgumentException("Can't find last but one element on list with only one element")
+      case x :: _ ::  Nil => x
+      case  _ :: tail => penultimate(tail)
+    }
 
 
     // P3 Find the Kth element of a list.
@@ -209,6 +227,7 @@ object CodeSamplesWorkingWithLists {
     }.toList
 
     def group(groups: List[Int], people: List[String]): List[List[List[String]]]  = groups match {
+      case Nil => Nil
       case h :: Nil => List(people.combinations(h).toList)
       case h :: tail => people.combinations(h).flatMap(k => group(tail,people diff k).map(k :: _)).toList
     }
