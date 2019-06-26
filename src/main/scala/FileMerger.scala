@@ -37,7 +37,7 @@ class FileMerger {
     val outFile = new PrintWriter(new File(outputFile))
 
     //NOTE: it is supposed that each file is valid and contains at least one line
-    val fileStreamsSorted = files
+    val fileStreams = files
       .map(_.getLines()
             .map(_.split(":"))
             .map(k => Row(k(0).toInstant, k(1).toInt)))
@@ -66,7 +66,7 @@ class FileMerger {
 
     import scala.util.chaining._
 
-    fileStreamsSorted
+    fileStreams
       .reduce(mergeLists)
       .pipe(groupList)
       .foreach{ res =>
